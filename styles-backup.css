@@ -1,0 +1,141 @@
+/* BACKUP OF ORIGINAL STYLES - Keep this file for reference */
+
+/* Original Tool Grid Layout */
+.tools-unique-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem 2rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+/* Staggered/Offset effect using nth-child */
+.tools-unique-grid .tool-card:nth-child(2n) {
+    margin-top: 2.5rem;
+}
+.tools-unique-grid .tool-card:nth-child(3n) {
+    margin-bottom: 2.5rem;
+}
+
+@media (max-width: 900px) {
+    .tools-unique-grid .tool-card:nth-child(2n) {
+        margin-top: 1.2rem;
+    }
+    .tools-unique-grid .tool-card:nth-child(3n) {
+        margin-bottom: 1.2rem;
+    }
+}
+
+/* Original Glassmorphism & 3D Card Styles */
+.tool-card {
+    background: rgba(40, 20, 70, 0.55) !important;
+    box-shadow: 0 8px 32px 0 rgba(80, 30, 180, 0.25), 0 1.5px 8px 0 rgba(147, 51, 234, 0.10);
+    border-radius: 1.5rem;
+    border: 1.5px solid rgba(147, 51, 234, 0.25);
+    backdrop-filter: blur(12px) saturate(1.2);
+    transition: 
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        border 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow, border;
+    position: relative;
+    overflow: visible;
+}
+
+.tool-card::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 2rem;
+    background: linear-gradient(120deg, rgba(147,51,234,0.25) 0%, rgba(168,85,247,0.18) 100%);
+    z-index: 0;
+    filter: blur(8px);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-10px) scale(1.04) rotateX(6deg) rotateZ(-1deg) skewY(-1deg);
+    box-shadow: 0 16px 48px 0 rgba(147, 51, 234, 0.25), 0 4px 24px 0 rgba(168, 85, 247, 0.18);
+    border: 2.5px solid var(--sl-accent);
+    z-index: 2;
+}
+
+.tool-card:hover::before {
+    opacity: 1;
+    background: linear-gradient(100deg, rgba(168,85,247,0.35) 0%, rgba(147,51,234,0.25) 100%);
+    filter: blur(16px);
+}
+
+.tool-card .tool-icon {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px 0 rgba(147, 51, 234, 0.18);
+    border: 2px solid rgba(147, 51, 234, 0.18);
+    background: linear-gradient(135deg, var(--sl-accent) 60%, var(--sl-purple) 100%);
+}
+
+.tool-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+}
+
+.tool-card p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.92;
+}
+
+@media (max-width: 700px) {
+    .tools-unique-grid {
+        gap: 1.2rem 0.5rem;
+    }
+    .tool-card {
+        border-radius: 1rem;
+        padding: 1.2rem 0.8rem;
+    }
+}
+
+/* Original Tool Icons */
+.tool-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--sl-accent), var(--sl-purple));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.tool-icon i {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.05);
+    }
+}
+
+/* Original Tool Glow Effect */
+.tool-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+} 

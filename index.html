@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Monarch's Arsenal - Ultimate Tool Collection</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate.css for animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="modern-styles.css">
+</head>
+<body class="animated-bg min-h-screen">
+    <!-- Particle Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full flex justify-between items-center h-16 px-6 backdrop-blur-md border-b border-purple-700 shadow-2xl z-50">
+        <!-- Logo and Title -->
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-purple-800 rounded-full flex items-center justify-center shadow-lg">
+                <i class="fas fa-crown text-white text-lg"></i>
+            </div>
+            <span class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                Shadow Monarch's Arsenal
+            </span>
+        </div>
+        <!-- Navigation Links -->
+        <div class="flex space-x-6">
+            <a href="#calculator" class="flex items-center text-white hover:text-purple-400 transition">
+                <i class="fas fa-calculator mr-2"></i> Calculator
+            </a>
+            <a href="#converter" class="flex items-center text-white hover:text-purple-400 transition">
+                <i class="fas fa-exchange-alt mr-2"></i> Currency
+            </a>
+            <a href="#timer" class="flex items-center text-white hover:text-purple-400 transition">
+                <i class="fas fa-clock mr-2"></i> Timer
+            </a>
+            <a href="#tools" class="flex items-center text-white hover:text-purple-400 transition">
+                <i class="fas fa-tools mr-2"></i> More
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 pt-16 pb-10 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+                Arise, Shadow Monarch!
+            </h2>
+            <p class="text-2xl text-white mb-8 max-w-2xl mx-auto">
+                Command the ultimate collection of tools and unleash your power. Every tool is a shadow soldier ready to serve.
+            </p>
+            <div class="flex justify-center">
+                <button class="px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-lg hover:from-purple-700 hover:to-purple-900 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center">
+                    <i class="fas fa-play mr-2"></i> Begin Your Conquest
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-8 relative z-10">
+        <!-- Tools Grid -->
+        <div class="tools-unique-grid">
+            <!-- Calculator Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="calculator">
+                <div class="tool-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Calculator</h2>
+                    <div class="tool-desc">Unleash the power of numbers</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- Currency Converter Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="converter">
+                <div class="tool-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Currency Converter</h2>
+                    <div class="tool-desc">Master global currencies</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- Unit Converter Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="unit-converter">
+                <div class="tool-icon">
+                    <i class="fas fa-ruler-combined"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Unit Converter</h2>
+                    <div class="tool-desc">Convert with precision</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+            
+            <!-- Timer Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="timer">
+                <div class="tool-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Timer</h2>
+                    <div class="tool-desc">Control time itself</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- Notepad Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="notepad">
+                <div class="tool-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Notepad</h2>
+                    <div class="tool-desc">Record your knowledge</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- Weather Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="weather">
+                <div class="tool-icon">
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Weather</h2>
+                    <div class="tool-desc">Command the elements</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- Password Generator Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="password-generator">
+                <div class="tool-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Password Generator</h2>
+                    <div class="tool-desc">Forge unbreakable keys</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- Color Picker Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="color-picker">
+                <div class="tool-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Color Picker</h2>
+                    <div class="tool-desc">Harness the spectrum</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- QR Code Generator Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="qr-generator">
+                <div class="tool-icon">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>QR Generator</h2>
+                    <div class="tool-desc">Create digital portals</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- Text Analyzer Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="text-analyzer">
+                <div class="tool-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Text Analyzer</h2>
+                    <div class="tool-desc">Decode the written word</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- File Converter Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="file-converter">
+                <div class="tool-icon">
+                    <i class="fas fa-file-export"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>File Converter</h2>
+                    <div class="tool-desc">Transform any format</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+
+            <!-- Stopwatch Card -->
+            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="stopwatch">
+                <div class="tool-icon">
+                    <i class="fas fa-stopwatch"></i>
+                </div>
+                <div class="tool-content">
+                    <h2>Stopwatch</h2>
+                    <div class="tool-desc">Measure every moment</div>
+                </div>
+                <div class="tool-glow"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="backdrop-blur-md border-t border-purple-700 text-gray-300 p-6 mt-12 relative z-10">
+        <div class="container mx-auto text-center">
+            <div class="flex justify-center items-center space-x-4 mb-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-purple-600 to-purple-800 rounded-full flex items-center justify-center">
+                    <i class="fas fa-dragon text-white text-sm"></i>
+                </div>
+                <p class="text-lg">© 2024 Shadow Monarch's Arsenal</p>
+            </div>
+            <p class="text-purple-400 font-semibold">
+                <span class="animate-pulse">Arise</span> with power! 
+                <i class="fas fa-dragon text-purple-500 ml-2"></i>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-purple-400 text-xl font-semibold">Summoning Shadows...</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
