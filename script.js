@@ -905,6 +905,19 @@ function downloadConvertedFile(content, format) {
     URL.revokeObjectURL(url);
 }
 
+// Sticky header hide-on-scroll
+let lastScrollY = window.scrollY;
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+    if (!nav) return;
+    if (window.scrollY > lastScrollY && window.scrollY > 30) {
+        nav.classList.add('hide-on-scroll');
+    } else {
+        nav.classList.remove('hide-on-scroll');
+    }
+    lastScrollY = window.scrollY;
+});
+
 // Initialize all tools
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Shadow Monarch Arsenal initializing...');

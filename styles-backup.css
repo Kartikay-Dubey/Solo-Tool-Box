@@ -1,141 +1,616 @@
-/* BACKUP OF ORIGINAL STYLES - Keep this file for reference */
+/* Modern Glassmorphism Tool Cards - Add this to your existing styles.css */
 
-/* Original Tool Grid Layout */
+/* CSS Variables for Glassmorphism */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+    --hover-glow: rgba(147, 51, 234, 0.15);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, rgba(60,30,100,0.95) 0%, rgba(80,30,180,0.98) 100%) !important;
+    border: 1.5px solid #a855f7 !important;
+    box-shadow: 0 0 32px 0 rgba(147,51,234,0.25), 0 1.5px 8px 0 rgba(147, 51, 234, 0.15);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    color: #f3e8ff !important;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-header {
+    color: #f3e8ff !important;
+    font-weight: 700;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(147, 51, 234, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Input Field Styles */
+.input-field {
+    background: rgba(31, 41, 55, 0.8) !important;
+    border: 1px solid rgba(147, 51, 234, 0.3) !important;
+    color: #f3e8ff !important;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+    background: rgba(31, 41, 55, 0.9) !important;
+}
+
+.input-field::placeholder {
+    color: rgba(243, 232, 255, 0.6);
+}
+
+/* Loading Screen Styles */
+#loading-screen {
+    background: linear-gradient(135deg, #181622 0%, #1a1027 100%);
+}
+
+#loading-screen.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Navigation and Footer Fixes */
+nav {
+    background: rgba(26, 26, 26, 0.7) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(147, 51, 234, 0.5) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    min-height: 56px !important;
+    height: 56px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+footer {
+    background: rgba(26, 26, 26, 0.9) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(147, 51, 234, 0.5) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Modern Tool Grid Layout - Reduced Size & Better Spacing */
 .tools-unique-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2.5rem 2rem;
-    margin-top: 2rem;
-    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1.25rem;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Staggered/Offset effect using nth-child */
-.tools-unique-grid .tool-card:nth-child(2n) {
-    margin-top: 2.5rem;
-}
-.tools-unique-grid .tool-card:nth-child(3n) {
-    margin-bottom: 2.5rem;
-}
-
-@media (max-width: 900px) {
-    .tools-unique-grid .tool-card:nth-child(2n) {
-        margin-top: 1.2rem;
-    }
-    .tools-unique-grid .tool-card:nth-child(3n) {
-        margin-bottom: 1.2rem;
+@media (min-width: 700px) {
+    .tools-unique-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 1.5rem;
+        overflow-x: visible;
+        flex-wrap: wrap;
+        scroll-snap-type: none;
     }
 }
 
-/* Original Glassmorphism & 3D Card Styles */
+/* Modern Glassmorphism Card Design */
 .tool-card {
-    background: rgba(40, 20, 70, 0.55) !important;
-    box-shadow: 0 8px 32px 0 rgba(80, 30, 180, 0.25), 0 1.5px 8px 0 rgba(147, 51, 234, 0.10);
-    border-radius: 1.5rem;
-    border: 1.5px solid rgba(147, 51, 234, 0.25);
-    backdrop-filter: blur(12px) saturate(1.2);
-    transition: 
-        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-        border 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform, box-shadow, border;
+    background: linear-gradient(135deg, #221a36 0%, #2d1b69 100%) !important;
+    border: 1.5px solid #3b2177;
+    box-shadow: 0 4px 24px 0 rgba(80, 30, 180, 0.13), 0 1.5px 8px 0 rgba(147, 51, 234, 0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 1.2rem 1rem 1.2rem !important;
+    min-height: 130px !important;
+    min-width: 280px;
+    max-width: 420px;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    transition: box-shadow 0.22s cubic-bezier(.4,0,.2,1), transform 0.18s cubic-bezier(.4,0,.2,1), border 0.18s cubic-bezier(.4,0,.2,1);
 }
 
-.tool-card::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 2rem;
-    background: linear-gradient(120deg, rgba(147,51,234,0.25) 0%, rgba(168,85,247,0.18) 100%);
-    z-index: 0;
-    filter: blur(8px);
-    opacity: 0.7;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-
-.tool-card:hover {
-    transform: translateY(-10px) scale(1.04) rotateX(6deg) rotateZ(-1deg) skewY(-1deg);
-    box-shadow: 0 16px 48px 0 rgba(147, 51, 234, 0.25), 0 4px 24px 0 rgba(168, 85, 247, 0.18);
-    border: 2.5px solid var(--sl-accent);
-    z-index: 2;
-}
-
-.tool-card:hover::before {
-    opacity: 1;
-    background: linear-gradient(100deg, rgba(168,85,247,0.35) 0%, rgba(147,51,234,0.25) 100%);
-    filter: blur(16px);
+.tool-card:hover, .tool-card:focus-visible {
+    box-shadow: 0 8px 32px 0 rgba(147,51,234,0.18), 0 1.5px 8px 0 rgba(147, 51, 234, 0.13);
+    transform: scale(1.045) translateY(-2px);
+    border-color: #a855f7;
 }
 
 .tool-card .tool-icon {
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 12px 0 rgba(147, 51, 234, 0.18);
-    border: 2px solid rgba(147, 51, 234, 0.18);
-    background: linear-gradient(135deg, var(--sl-accent) 60%, var(--sl-purple) 100%);
-}
-
-.tool-card h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: 0.01em;
-}
-
-.tool-card p {
-    font-size: 1.1rem;
-    font-weight: 400;
-    opacity: 0.92;
-}
-
-@media (max-width: 700px) {
-    .tools-unique-grid {
-        gap: 1.2rem 0.5rem;
-    }
-    .tool-card {
-        border-radius: 1rem;
-        padding: 1.2rem 0.8rem;
-    }
-}
-
-/* Original Tool Icons */
-.tool-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--sl-accent), var(--sl-purple));
-    border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7 60%, #9333ea 100%) !important;
+    color: #fff !important;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
-    position: relative;
-    animation: iconFloat 3s ease-in-out infinite;
+    margin-bottom: 0.7rem;
+    width: 54px;
+    height: 54px;
+    font-size: 1.7rem;
+    box-shadow: 0 2px 8px rgba(147, 51, 234, 0.18);
 }
 
-.tool-icon i {
-    font-size: 1.5rem;
-    color: white;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+.tool-card .tool-icon i {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(168,85,247,0.25);
 }
 
-@keyframes iconFloat {
+.tool-card h2 {
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: #fff;
+    letter-spacing: 0.01em;
+    text-align: center;
+}
+
+.tool-card .tool-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.tool-card .tool-desc {
+    font-size: 1.05rem;
+    color: #d1c4e9;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.97;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(80,30,180,0.10);
+    padding: 0.2rem 0.4rem 0.1rem 0.4rem;
+    text-align: center;
+    border-radius: 0.7rem;
+    background: rgba(60, 30, 100, 0.18);
+    box-shadow: 0 1px 4px rgba(80,30,180,0.04);
+    min-height: 38px;
+    max-width: 90%;
+}
+
+/* Floating Animation */
+@keyframes cardFloat {
     0%, 100% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
     50% {
-        transform: translateY(-5px) scale(1.05);
+        transform: translateY(-2px);
     }
 }
 
-/* Original Tool Glow Effect */
+/* Tool card entrance animation */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered Animation Delay */
+.tool-card:nth-child(1) { animation-delay: 0.2s, 0s; }
+.tool-card:nth-child(2) { animation-delay: 0.4s, 0.5s; }
+.tool-card:nth-child(3) { animation-delay: 0.6s, 1s; }
+.tool-card:nth-child(4) { animation-delay: 0.8s, 1.5s; }
+.tool-card:nth-child(5) { animation-delay: 1.0s, 2s; }
+.tool-card:nth-child(6) { animation-delay: 1.2s, 2.5s; }
+.tool-card:nth-child(7) { animation-delay: 1.4s, 3s; }
+.tool-card:nth-child(8) { animation-delay: 1.6s, 3.5s; }
+.tool-card:nth-child(9) { animation-delay: 1.8s, 4s; }
+.tool-card:nth-child(10) { animation-delay: 2.0s, 4.5s; }
+.tool-card:nth-child(11) { animation-delay: 2.2s, 5s; }
+.tool-card:nth-child(12) { animation-delay: 2.4s, 5.5s; }
+
+/* Pause animation on hover */
+.tool-card:hover {
+    animation-play-state: paused;
+}
+
+/* Glow Effect */
 .tool-glow {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at center, 
+        rgba(147, 51, 234, 0.1) 0%, 
+        transparent 70%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
     pointer-events: none;
+    border-radius: 20px;
+}
+
+.tool-card:hover .tool-glow {
+    opacity: 1;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+    .tools-unique-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .tool-card {
+        min-height: 90px !important;
+        padding: 0.7rem 0.5rem 0.6rem 0.5rem !important;
+    }
+    
+    .tool-card .tool-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+    
+    .tool-card h2 {
+        font-size: 1.05rem;
+    }
+    
+    .tool-card .tool-desc {
+        font-size: 0.93rem;
+        padding: 0.15rem 0.2rem 0.1rem 0.2rem;
+    }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .tools-unique-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.25rem;
+    }
+    
+    .tool-card {
+        padding: 1.4rem;
+        min-height: 190px;
+    }
+}
+
+/* High DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .tool-card {
+        backdrop-filter: blur(25px) saturate(180%);
+        -webkit-backdrop-filter: blur(25px) saturate(180%);
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .tool-card {
+        animation: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .tool-card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .tool-card .tool-icon {
+        transition: transform 0.2s ease;
+    }
+    
+    .tool-card:hover .tool-icon {
+        transform: scale(1.05);
+    }
+}
+
+/* Focus States for Accessibility */
+.tool-card:focus {
+    outline: 2px solid #9333ea;
+    outline-offset: 2px;
+}
+
+.tool-card:focus-visible {
+    outline: 2px solid #9333ea;
+    outline-offset: 2px;
+}
+
+body, .animated-bg {
+    background: linear-gradient(135deg, #181622 0%, #1a1027 100%) fixed !important;
+    min-height: 100vh;
+    /* Keep particles visible but subtle */
+}
+
+/* Subtle animated overlay for depth */
+.animated-bg::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 60% 40%, rgba(147,51,234,0.08) 0%, transparent 70%),
+                radial-gradient(circle at 20% 80%, rgba(80,30,180,0.10) 0%, transparent 70%);
+    animation: bgMove 18s linear infinite alternate;
+}
+@keyframes bgMove {
+    0% { background-position: 60% 40%, 20% 80%; }
+    100% { background-position: 65% 45%, 25% 85%; }
+}
+
+/* Navigation Styles */
+nav {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+nav .fa-crown {
+    font-size: 1.5rem;
+}
+
+nav a {
+    color: #fff !important;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    opacity: 0.95;
+}
+
+nav a:hover {
+    color: #a855f7 !important;
+    opacity: 1;
+}
+
+.bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+/* Additional Component Styles */
+.calculator-container,
+.converter-container,
+.text-analyzer-container,
+.file-converter-container {
+    color: #f3e8ff;
+}
+
+/* Grid styles for calculator and other tools */
+.grid {
+    display: grid;
+}
+
+.grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+/* Flex utilities */
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+/* Spacing utilities */
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-2 {
+    padding: 0.5rem;
+}
+
+.p-4 {
+    padding: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-32 {
+    height: 8rem;
+}
+
+.space-y-2 > * + * {
+    margin-top: 0.5rem;
+}
+
+/* Text utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+/* Color utilities */
+.text-white {
+    color: #ffffff;
+}
+
+.text-gray-300 {
+    color: #d1d5db;
+}
+
+.text-gray-400 {
+    color: #9ca3af;
+}
+
+.text-purple-400 {
+    color: #c084fc;
+}
+
+.text-green-400 {
+    color: #4ade80;
+}
+
+/* Background utilities */
+.bg-gray-700 {
+    background-color: #374151;
+}
+
+.bg-gray-800 {
+    background-color: #1f2937;
+}
+
+/* Border utilities */
+.border {
+    border-width: 1px;
+}
+
+.border-gray-600 {
+    border-color: #4b5563;
+}
+
+.border-gray-700 {
+    border-color: #374151;
+}
+
+.rounded {
+    border-radius: 0.25rem;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+/* Resize utilities */
+.resize-none {
+    resize: none;
+}
+
+/* Block utilities */
+.block {
+    display: block;
+}
+
+/* Transition utilities */
+.transition-colors {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Hover utilities */
+.hover\:text-white:hover {
+    color: #ffffff;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+    .md\:text-7xl {
+        font-size: 4.5rem;
+    }
+}
+
+/* Animation utilities */
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
 } 

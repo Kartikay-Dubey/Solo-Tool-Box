@@ -96,14 +96,25 @@ nav {
     height: 56px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.4s cubic-bezier(.4,0,.2,1);
+    position: sticky;
+    top: 0;
+}
+
+/* Hide nav on scroll down, show on scroll up */
+nav.hide-on-scroll {
+    top: -70px !important;
+    transition: top 0.4s cubic-bezier(.4,0,.2,1);
 }
 
 footer {
-    background: rgba(26, 26, 26, 0.9) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: linear-gradient(135deg, #181622 0%, #1a1027 100%) !important;
     border-top: 1px solid rgba(147, 51, 234, 0.5) !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    color: #d1d5db;
 }
 
 /* Modern Tool Grid Layout - Reduced Size & Better Spacing */
@@ -137,8 +148,9 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1.2rem 1.2rem 1rem 1.2rem !important;
-    min-height: 130px !important;
+    padding: 0.7rem 0.7rem 0.6rem 0.7rem !important;
+    min-height: 90px !important;
+    max-height: 140px;
     min-width: 280px;
     max-width: 420px;
     position: relative;
@@ -159,10 +171,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.7rem;
-    width: 54px;
-    height: 54px;
-    font-size: 1.7rem;
+    margin-bottom: 0.4rem;
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
     box-shadow: 0 2px 8px rgba(147, 51, 234, 0.18);
 }
 
@@ -172,9 +184,9 @@ footer {
 }
 
 .tool-card h2 {
-    font-size: 1.18rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    margin: 0 0 0.5rem 0;
+    margin-bottom: 0.2rem;
     color: #fff;
     letter-spacing: 0.01em;
     text-align: center;
@@ -188,7 +200,7 @@ footer {
 }
 
 .tool-card .tool-desc {
-    font-size: 1.05rem;
+    font-size: 0.93rem;
     color: #d1c4e9;
     margin: 0.5rem 0 0 0;
     opacity: 0.97;
@@ -196,12 +208,12 @@ footer {
     letter-spacing: 0.01em;
     line-height: 1.6;
     text-shadow: 0 1px 4px rgba(80,30,180,0.10);
-    padding: 0.2rem 0.4rem 0.1rem 0.4rem;
+    padding: 0.1rem 0.2rem 0.1rem 0.2rem;
     text-align: center;
     border-radius: 0.7rem;
     background: rgba(60, 30, 100, 0.18);
     box-shadow: 0 1px 4px rgba(80,30,180,0.04);
-    min-height: 38px;
+    min-height: 24px;
     max-width: 90%;
 }
 
@@ -269,23 +281,24 @@ footer {
     }
     
     .tool-card {
-        min-height: 90px !important;
-        padding: 0.7rem 0.5rem 0.6rem 0.5rem !important;
+        min-height: 70px !important;
+        max-height: 110px;
+        padding: 0.5rem 0.3rem 0.4rem 0.3rem !important;
     }
     
     .tool-card .tool-icon {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
+        width: 28px;
+        height: 28px;
+        font-size: 0.95rem;
     }
     
     .tool-card h2 {
-        font-size: 1.05rem;
+        font-size: 0.93rem;
     }
     
     .tool-card .tool-desc {
-        font-size: 0.93rem;
-        padding: 0.15rem 0.2rem 0.1rem 0.2rem;
+        font-size: 0.85rem;
+        min-height: 18px;
     }
 }
 
