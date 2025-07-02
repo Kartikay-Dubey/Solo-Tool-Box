@@ -14,46 +14,38 @@
     <link rel="stylesheet" href="modern-styles.css">
 </head>
 <body class="animated-bg min-h-screen">
-    <!-- Particle Background -->
     <div id="particles-js" class="fixed inset-0 z-0"></div>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full flex justify-center items-center h-16 px-6 backdrop-blur-md border-b border-purple-700 shadow-2xl z-50">
+    <nav>
         <!-- Logo and Title -->
-        <div class="flex items-center space-x-3 justify-center w-full">
-            <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-purple-800 rounded-full flex items-center justify-center shadow-lg">
-                <i class="fas fa-crown text-white text-lg"></i>
+        <div class="nav-content">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
             </div>
-            <span class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+            <span class="nav-title">
                 Shadow Monarch's Arsenal
             </span>
         </div>
-        <!-- Navigation Links removed -->
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative z-10 pt-16 pb-10 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600 bg-clip-text text-transparent">
-                Arise, Shadow Monarch!
-            </h2>
-            <p class="text-2xl text-white mb-8 max-w-2xl mx-auto">
-                Command the ultimate collection of tools and unleash your power. Every tool is a shadow soldier ready to serve.
-            </p>
-            <div class="flex justify-center">
-                <button class="px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-lg hover:from-purple-700 hover:to-purple-900 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center">
-                    <i class="fas fa-play mr-2"></i> Begin Your Conquest
-                </button>
+    <section class="hero-section">
+        <div>
+            <h1 class="hero-title">Arise, Shadow Monarch!</h1>
+            <p class="hero-desc">Command the ultimate collection of tools and unleash your power. Every tool is a shadow soldier ready to serve.</p>
+            <div class="hero-btn-wrap">
+                <button class="btn-primary"><i class="fas fa-play"></i> Begin Your Conquest</button>
             </div>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="container mx-auto p-8 relative z-10">
+    <main>
         <!-- Tools Grid -->
         <div class="tools-unique-grid">
             <!-- Calculator Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="calculator">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="calculator">
                 <div class="tool-icon">
                     <i class="fas fa-calculator"></i>
                 </div>
@@ -65,7 +57,7 @@
             </div>
 
             <!-- Currency Converter Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="converter">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="converter">
                 <div class="tool-icon">
                     <i class="fas fa-exchange-alt"></i>
                 </div>
@@ -77,7 +69,7 @@
             </div>
 
             <!-- Unit Converter Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="unit-converter">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="unit-converter">
                 <div class="tool-icon">
                     <i class="fas fa-ruler-combined"></i>
                 </div>
@@ -89,7 +81,7 @@
             </div>
             
             <!-- Timer Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="timer">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="timer">
                 <div class="tool-icon">
                     <i class="fas fa-clock"></i>
                 </div>
@@ -101,7 +93,7 @@
             </div>
 
             <!-- Notepad Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="notepad">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="notepad">
                 <div class="tool-icon">
                     <i class="fas fa-book-open"></i>
                 </div>
@@ -113,7 +105,7 @@
             </div>
 
             <!-- Weather Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="weather">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="weather">
                 <div class="tool-icon">
                     <i class="fas fa-cloud-sun"></i>
                 </div>
@@ -125,7 +117,7 @@
             </div>
 
             <!-- Password Generator Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="password-generator">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="password-generator">
                 <div class="tool-icon">
                     <i class="fas fa-key"></i>
                 </div>
@@ -137,7 +129,7 @@
             </div>
 
             <!-- Color Picker Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="color-picker">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="color-picker">
                 <div class="tool-icon">
                     <i class="fas fa-palette"></i>
                 </div>
@@ -149,7 +141,7 @@
             </div>
 
             <!-- QR Code Generator Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="qr-generator">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="qr-generator">
                 <div class="tool-icon">
                     <i class="fas fa-qrcode"></i>
                 </div>
@@ -161,7 +153,7 @@
             </div>
 
             <!-- Text Analyzer Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="text-analyzer">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="text-analyzer">
                 <div class="tool-icon">
                     <i class="fas fa-chart-bar"></i>
                 </div>
@@ -173,7 +165,7 @@
             </div>
 
             <!-- File Converter Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="file-converter">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="file-converter">
                 <div class="tool-icon">
                     <i class="fas fa-file-export"></i>
                 </div>
@@ -185,7 +177,7 @@
             </div>
 
             <!-- Stopwatch Card -->
-            <div class="tool-card rounded-lg p-6 cursor-pointer animate__animated animate__fadeInUp" data-tool="stopwatch">
+            <div class="tool-card cursor-pointer animate__animated animate__fadeInUp" data-tool="stopwatch">
                 <div class="tool-icon">
                     <i class="fas fa-stopwatch"></i>
                 </div>
@@ -199,26 +191,21 @@
     </main>
 
     <!-- Footer -->
-    <footer class="backdrop-blur-md border-t border-purple-700 text-gray-300 p-6 mt-12 relative z-10">
-        <div class="container mx-auto text-center">
-            <div class="flex justify-center items-center space-x-4 mb-4">
-                <div class="w-8 h-8 bg-gradient-to-r from-purple-600 to-purple-800 rounded-full flex items-center justify-center">
-                    <i class="fas fa-dragon text-white text-sm"></i>
-                </div>
-                <p class="text-lg">© 2024 Shadow Monarch's Arsenal</p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-dragon"></i>
             </div>
-            <p class="text-purple-400 font-semibold">
-                <span class="animate-pulse">Arise</span> with power! 
-                <i class="fas fa-dragon text-purple-500 ml-2"></i>
-            </p>
+            <p>© 2024 Shadow Monarch's Arsenal</p>
+            <p><span class="animate-pulse">Arise</span> with power! <i class="fas fa-dragon"></i></p>
         </div>
     </footer>
 
     <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
+    <div id="loading-screen" style="position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center;">
         <div class="text-center">
-            <div class="w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p class="text-purple-400 text-xl font-semibold">Summoning Shadows...</p>
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Summoning Shadows...</p>
         </div>
     </div>
 

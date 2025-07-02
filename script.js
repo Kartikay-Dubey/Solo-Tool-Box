@@ -5,14 +5,21 @@ let calcDisplay = '';
 let stopwatchRunning = false;
 let stopwatchTime = 0;
 
-// Initialize particles.js with better error handling
+// Initialize particles.js with better error handling and fallback
 function initParticles() {
     try {
+        // Check if particles.js is loaded and the container exists
+        const particlesContainer = document.getElementById('particles-js');
+        if (!particlesContainer) {
+            console.log('Particles container not found');
+            return;
+        }
+
         if (typeof particlesJS !== 'undefined') {
             particlesJS('particles-js', {
                 particles: {
                     number: { 
-                        value: 80, 
+                        value: 60, 
                         density: { 
                             enable: true, 
                             value_area: 800 
@@ -21,23 +28,23 @@ function initParticles() {
                     color: { value: '#9333ea' },
                     shape: { type: 'circle' },
                     opacity: { 
-                        value: 0.5, 
+                        value: 0.4, 
                         random: false 
                     },
                     size: { 
-                        value: 3, 
+                        value: 2.5, 
                         random: true 
                     },
                     line_linked: {
                         enable: true,
                         distance: 150,
                         color: '#9333ea',
-                        opacity: 0.4,
+                        opacity: 0.3,
                         width: 1
                     },
                     move: {
                         enable: true,
-                        speed: 2,
+                        speed: 1.5,
                         direction: 'none',
                         random: false,
                         straight: false,
@@ -61,11 +68,33 @@ function initParticles() {
                 },
                 retina_detect: true
             });
+            console.log('Particles initialized successfully');
         } else {
-            console.log('Particles.js not loaded, skipping particle initialization');
+            console.log('Particles.js not loaded, creating fallback background');
+            createFallbackBackground();
         }
     } catch (error) {
         console.error('Error initializing particles:', error);
+        createFallbackBackground();
+    }
+}
+
+// Fallback background when particles.js fails
+function createFallbackBackground() {
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+        particlesContainer.innerHTML = `
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 30% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 70% 80%, rgba(80, 30, 180, 0.08) 0%, transparent 50%);
+                pointer-events: none;
+            "></div>
+        `;
     }
 }
 
@@ -925,10 +954,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hide loading screen
     hideLoadingScreen();
     
-    // Initialize particles with delay to ensure DOM is ready
+    // Initialize particles with better timing
     setTimeout(() => {
         initParticles();
-    }, 100);
+    }, 200);
     
     // Initialize all tool event listeners
     initCalculator();
@@ -957,4 +986,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     console.log('Shadow Monarch Arsenal initialized successfully!');
+});
+
+// Also try to initialize particles when window loads (fallback)
+window.addEventListener('load', () => {
+    // If particles weren't initialized yet, try again
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer && !particlesContainer.hasChildNodes()) {
+        setTimeout(() => {
+            initParticles();
+        }, 100);
+    }
 });

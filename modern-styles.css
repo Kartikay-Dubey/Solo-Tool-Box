@@ -84,6 +84,28 @@
     transition: opacity 0.5s ease;
 }
 
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(147, 51, 234, 0.3);
+    border-top: 3px solid #a855f7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: #a855f7;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
 /* Navigation and Footer Fixes */
 nav {
     background: rgba(26, 26, 26, 0.7) !important;
@@ -94,14 +116,32 @@ nav {
     z-index: 100;
     min-height: 56px !important;
     height: 56px !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding: 0 1rem !important;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: top 0.4s cubic-bezier(.4,0,.2,1);
     position: sticky;
     top: 0;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #fff;
+}
+
+.logo {
+    color: #a855f7;
+    font-size: 1.5rem;
+}
+
+.nav-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
 }
 
 /* Hide nav on scroll down, show on scroll up */
@@ -625,5 +665,58 @@ nav a:hover {
     }
     50% {
         opacity: .5;
+    }
+}
+
+/* --- Hero Section Styles --- */
+.hero-section {
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #c026d3 0%, #a855f7 50%, #9333ea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+}
+
+.hero-desc {
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin: 0 auto 0.2rem auto;
+    max-width: 700px;
+    line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-desc {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    .hero-desc {
+        font-size: 0.95rem;
+    }
+    .hero-section {
+        padding-top: 1.2rem;
+        padding-bottom: 0.7rem;
     }
 } 

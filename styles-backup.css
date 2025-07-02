@@ -342,7 +342,7 @@ footer {
 }
 
 body, .animated-bg {
-    background: linear-gradient(135deg, #181622 0%, #1a1027 100%) fixed !important;
+    background: linear-gradient(135deg, #181622 0%, #1a1027 100%)  !important;
     min-height: 100vh;
     /* Keep particles visible but subtle */
 }
