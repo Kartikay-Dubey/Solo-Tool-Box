@@ -12,9 +12,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom styles -->
     <link rel="stylesheet" href="modern-styles.css">
+    <!-- Background Music (hidden, no controls) -->
+    <!-- Place your audio file at: Self_Projects/Lego Tool/music/bg-music/Solo Leveling EP 6 OST FULL DARK ARIA LV2 by SawanoHiroyukinZkXAI Lyrics.mp3 -->
+    <audio id="bg-music" src="music/bg-music/Solo Leveling EP 6 OST FULL DARK ARIA LV2 by SawanoHiroyukinZkXAI Lyrics.mp3" loop preload="auto" style="display:none;"></audio>
+    <!-- Glitch Loader CSS (added below) -->
+    <link rel="stylesheet" href="glitch-loader.css">
 </head>
 <body class="animated-bg min-h-screen">
     <div id="particles-js" class="fixed inset-0 z-0"></div>
+    <!-- Glitch Loader (full-screen background, sci-fi glitch/parallax) -->
+    <!-- Place your loader image in /images/loader-glitch.png (should be large, dark, and cyber/sci-fi themed) -->
+    <div id="glitch-loader" class="glitch-loader-bg">
+        <div class="glitch-bg-img"></div>
+        <div class="glitch-overlay"></div>
+        <div class="glitch-scanlines"></div>
+        <div class="glitch-loader-text">Summoning Shadows...</div>
+    </div>
     
     <!-- Navigation -->
     <nav>
@@ -191,25 +204,47 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <i class="fas fa-dragon"></i>
+    <!-- Redesigned Footer: Modern, Neon, Responsive, No Top Borders -->
+    <footer class="footer-modern neon-footer-fadein">
+        <div class="footer-bg-animated"></div>
+        <div class="footer-inner">
+            <div class="footer-content-grid">
+                <div class="footer-info-block">
+                    <div class="footer-logo-glow">
+                        <span class="footer-logo-icon"><i class="fas fa-dragon"></i></span>
+                    </div>
+                    <div class="footer-info-text">
+                        <span class="footer-name">Kartikay Dubey</span>
+                        <span class="footer-role">Developer & Designer</span>
+                        <a href="mailto:kartikaydubey@example.com" class="footer-email-link">kartikaydubey@example.com</a>
+                    </div>
+                </div>
+                <div class="footer-socials-block">
+                    <div class="footer-socials-row">
+                        <a href="https://github.com/kartikaydubey" class="footer-social-neo" target="_blank" aria-label="GitHub">
+                            <span class="footer-social-shape hexagon"><i class="fab fa-github"></i></span>
+                        </a>
+                        <a href="https://linkedin.com/in/kartikaydubey" class="footer-social-neo" target="_blank" aria-label="LinkedIn">
+                            <span class="footer-social-shape hexagon"><i class="fab fa-linkedin"></i></span>
+                        </a>
+                        <a href="https://instagram.com/kartikaydubey" class="footer-social-neo" target="_blank" aria-label="Instagram">
+                            <span class="footer-social-shape hexagon"><i class="fab fa-instagram"></i></span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <p>© 2024 Shadow Monarch's Arsenal</p>
-            <p><span class="animate-pulse">Arise</span> with power! <i class="fas fa-dragon"></i></p>
+            <div class="footer-divider-glow"></div>
+            <div class="footer-bottom-row">
+                <span>© 2024 Shadow Monarch's Arsenal</span>
+            </div>
         </div>
     </footer>
 
-    <!-- Loading Screen -->
-    <div id="loading-screen" style="position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center;">
-        <div class="text-center">
-            <div class="loading-spinner"></div>
-            <p class="loading-text">Summoning Shadows...</p>
-        </div>
-    </div>
+    <!-- Loading Screen (replaced by glitch loader above) -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
+    <!-- Background Music & Glitch Loader logic -->
+    <script src="site-extras.js"></script>
 </body>
 </html>

@@ -1,0 +1,490 @@
+/*
+ * Fullscreen Glitch Loader Styles
+ * Place loader image in /images/loader-glitch.png
+ * Integrates with dark/cyber theme
+ */
+/* Loader: Fullscreen Glitch Loader Styles */
+.glitch-loader-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #181622;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1);
+    opacity: 1;
+}
+.glitch-loader-bg.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+.glitch-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://wallpapercave.com/wp/wp9194374.jpg') center center / cover no-repeat;
+    will-change: transform, filter;
+    animation: glitch-parallax 6s linear infinite alternate, glitch-flicker 1.2s steps(2, end) infinite;
+    filter: brightness(1.1) contrast(1.08) saturate(1.1);
+}
+@keyframes glitch-parallax {
+    0% { transform: scale(1.04) translate3d(0px,0px,0); }
+    20% { transform: scale(1.06) translate3d(-8px, 6px, 0); }
+    40% { transform: scale(1.03) translate3d(7px, -8px, 0); }
+    60% { transform: scale(1.07) translate3d(-10px, 4px, 0); }
+    80% { transform: scale(1.05) translate3d(6px, 7px, 0); }
+    100% { transform: scale(1.04) translate3d(0px,0px,0); }
+}
+@keyframes glitch-flicker {
+    0%, 100% { filter: brightness(1.1) contrast(1.08) saturate(1.1); }
+    10% { filter: brightness(1.2) contrast(1.2) saturate(1.2); }
+    20% { filter: brightness(0.9) contrast(1.1) saturate(1.3); }
+    30% { filter: brightness(1.3) contrast(1.3) saturate(1.1); }
+    40% { filter: brightness(1.1) contrast(1.08) saturate(1.1); }
+    50% { filter: brightness(1.2) contrast(1.2) saturate(1.2); }
+    60% { filter: brightness(0.8) contrast(1.2) saturate(1.2); }
+    70% { filter: brightness(1.3) contrast(1.1) saturate(1.3); }
+    80% { filter: brightness(1.1) contrast(1.08) saturate(1.1); }
+    90% { filter: brightness(1.2) contrast(1.2) saturate(1.2); }
+}
+/* RGB split effect */
+.glitch-bg-img::before, .glitch-bg-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: inherit;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.18;
+    mix-blend-mode: lighten;
+    pointer-events: none;
+    z-index: 2;
+}
+.glitch-bg-img::before {
+    filter: blur(1.5px) contrast(1.2) drop-shadow(0 0 8px #9333ea) hue-rotate(20deg);
+    animation: glitch-rgb 0.7s infinite linear alternate;
+}
+.glitch-bg-img::after {
+    filter: blur(1.5px) contrast(1.2) drop-shadow(0 0 8px #a855f7) hue-rotate(-20deg);
+    animation: glitch-rgb2 0.9s infinite linear alternate;
+}
+@keyframes glitch-rgb {
+    0% { opacity: 0.18; transform: translate(0,0); }
+    20% { opacity: 0.28; transform: translate(-2px,2px); }
+    40% { opacity: 0.22; transform: translate(2px,-2px); }
+    60% { opacity: 0.18; transform: translate(-1px,1px); }
+    80% { opacity: 0.28; transform: translate(1px,-2px); }
+    100% { opacity: 0.18; transform: translate(0,0); }
+}
+@keyframes glitch-rgb2 {
+    0% { opacity: 0.18; transform: translate(0,0); }
+    20% { opacity: 0.28; transform: translate(2px,-2px); }
+    40% { opacity: 0.22; transform: translate(-2px,2px); }
+    60% { opacity: 0.18; transform: translate(1px,-1px); }
+    80% { opacity: 0.28; transform: translate(-1px,2px); }
+    100% { opacity: 0.18; transform: translate(0,0); }
+}
+/* Scanlines overlay */
+.glitch-scanlines {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.12) 0px,
+        rgba(0,0,0,0.12) 1.5px,
+        transparent 1.5px,
+        transparent 4px
+    );
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+    animation: scan-move 2.5s linear infinite;
+}
+@keyframes scan-move {
+    0% { background-position-y: 0; }
+    100% { background-position-y: 8px; }
+}
+/* Overlay for extra depth */
+.glitch-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 60% 40%, rgba(147,51,234,0.10) 0%, transparent 70%),
+                radial-gradient(circle at 20% 80%, rgba(80,30,180,0.13) 0%, transparent 70%);
+    z-index: 5;
+    pointer-events: none;
+}
+/* Loader text: clean, static, no glitch/flicker */
+.glitch-loader-text {
+    position: absolute;
+    bottom: 7vh;
+    left: 0; right: 0;
+    text-align: center;
+    color: #a855f7;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 12px #a855f7cc, 0 0 2px #fff;
+    z-index: 20;
+    /* No animation, no flicker, no blur */
+}
+@media (max-width: 600px) {
+    .glitch-loader-text { font-size: 1rem; }
+}
+/* --- Redesigned Neon Footer --- */
+.footer-modern {
+    position: relative;
+    background: #181622;
+    color: #f3e8ff;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    margin-top: 2.5rem;
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: 0 -8px 32px #1a1027cc;
+}
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.2rem 1.5rem 1.1rem 1.5rem;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    animation: footerFadeIn 1.2s cubic-bezier(.4,0,.2,1);
+}
+@keyframes footerFadeIn {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: none; }
+}
+.footer-content-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    width: 100%;
+}
+.footer-info-block {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+.footer-logo-glow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #221a36 0%, #2d1b69 100%);
+    border-radius: 1.2rem;
+    width: 62px;
+    height: 62px;
+    box-shadow: 0 0 0 4px #a855f7cc, 0 0 24px #a855f7aa, 0 2px 16px #a855f722;
+    position: relative;
+    transition: box-shadow 0.3s;
+}
+.footer-logo-glow:hover {
+    box-shadow: 0 0 0 7px #a855f7cc, 0 0 32px #a855f7cc, 0 2px 16px #a855f722;
+}
+.footer-logo-icon {
+    font-size: 2.5rem;
+    color: #a855f7;
+    filter: drop-shadow(0 0 12px #a855f7cc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+}
+.footer-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.01em;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+.footer-role {
+    font-size: 1.05rem;
+    color: #c084fc;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+.footer-email-link {
+    color: #a855f7;
+    font-size: 1.01rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s, text-shadow 0.2s;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+}
+.footer-email-link:hover {
+    color: #fff;
+    text-shadow: 0 0 8px #a855f7cc;
+    border-bottom: 2px solid #a855f7;
+}
+.footer-socials-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+.footer-socials-row {
+    display: flex;
+    gap: 1.1rem;
+}
+.footer-social-neo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    outline: none;
+}
+.footer-social-shape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    font-size: 2.1rem;
+    color: #a855f7;
+    background: rgba(60,30,100,0.13);
+    box-shadow: 0 2px 12px #a855f733;
+    position: relative;
+    transition: box-shadow 0.22s, color 0.22s, transform 0.22s, background 0.22s;
+    filter: drop-shadow(0 0 8px #a855f7cc);
+    border-radius: 16px;
+    border: 2.5px solid #a855f7;
+    clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
+    /* Hexagon shape */
+    background-clip: padding-box;
+}
+.footer-social-shape i {
+    z-index: 2;
+    position: relative;
+    color: #a855f7;
+    transition: color 0.22s;
+}
+.footer-social-neo:hover .footer-social-shape,
+.footer-social-neo:focus .footer-social-shape {
+    color: #fff;
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+    box-shadow: 0 0 18px #a855f7cc, 0 2px 16px #9333ea55;
+    border-color: #fff;
+    transform: scale(1.13) rotate(-3deg);
+    filter: drop-shadow(0 0 16px #a855f7cc);
+}
+.footer-social-neo:hover .footer-social-shape i,
+.footer-social-neo:focus .footer-social-shape i {
+    color: #fff;
+}
+.footer-divider-glow {
+    width: 100%;
+    height: 3px;
+    margin: 2.1rem 0 1.1rem 0;
+    background: linear-gradient(90deg, #a855f7 0%, #9333ea 100%);
+    box-shadow: 0 0 16px #a855f7cc, 0 0 32px #9333ea55;
+    border-radius: 2px;
+    opacity: 0.85;
+}
+.footer-bottom-row {
+    text-align: center;
+    color: #e9d8fd;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding-bottom: 1.1rem;
+    z-index: 2;
+    position: relative;
+}
+.footer-bg-animated {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(90deg, rgba(147,51,234,0.07) 0px, rgba(147,51,234,0.07) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(0deg, rgba(147,51,234,0.07) 0px, rgba(147,51,234,0.07) 1px, transparent 1px, transparent 40px),
+        linear-gradient(120deg, #221a36 0%, #2d1b69 100%);
+    opacity: 0.7;
+    animation: footer-bg-move 12s linear infinite alternate;
+}
+@keyframes footer-bg-move {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 40px 40px, 40px 40px, 0 0; }
+}
+@media (max-width: 900px) {
+    .footer-content-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    .footer-socials-block {
+        justify-content: flex-start;
+        margin-top: 0.7rem;
+    }
+}
+@media (max-width: 600px) {
+    .footer-inner {
+        padding: 1.2rem 0.5rem 0.7rem 0.5rem;
+    }
+    .footer-logo-glow {
+        font-size: 1.5rem;
+        width: 38px;
+        height: 38px;
+        border-radius: 0.7rem;
+    }
+    .footer-info-text {
+        gap: 0.1rem;
+    }
+    .footer-name {
+        font-size: 1.05rem;
+    }
+    .footer-role {
+        font-size: 0.93rem;
+    }
+    .footer-email-link {
+        font-size: 0.93rem;
+    }
+    .footer-social-shape {
+        font-size: 1.3rem;
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+    }
+    .footer-bottom-row {
+        font-size: 0.97rem;
+    }
+    .footer-divider-glow {
+        margin: 1.1rem 0 0.7rem 0;
+    }
+}
+/* Fade-in animation for footer */
+.neon-footer-fadein {
+    opacity: 0;
+    animation: footerFadeIn 1.2s cubic-bezier(.4,0,.2,1) forwards;
+}
+@media (max-width: 600px) {
+    .glitch-loader-text { font-size: 1rem; }
+}/*
+ * Glitch Loader Styles
+ * Place loader image in /images/loader-glitch.png
+ * Integrates with dark/cyber theme
+ */
+.glitch-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: linear-gradient(135deg, #181622 0%, #1a1027 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    opacity: 1;
+}
+.glitch-loader.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+.glitch-img-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.glitch-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.2) drop-shadow(0 0 16px #a855f7cc);
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 2;
+    animation: glitch-main 2.2s infinite linear alternate;
+}
+.glitch-img--2, .glitch-img--3 {
+    width: 100%;
+    height: 100%;
+    background: url('images/loader-glitch.png') center/contain no-repeat;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0.7;
+    mix-blend-mode: lighten;
+    pointer-events: none;
+}
+.glitch-img--2 {
+    filter: blur(1.5px) contrast(1.2) drop-shadow(0 0 8px #9333ea);
+    animation: glitch-rgb 1.2s infinite linear alternate;
+    z-index: 3;
+}
+.glitch-img--3 {
+    filter: blur(0.5px) contrast(1.1) drop-shadow(0 0 8px #a855f7);
+    animation: glitch-scan 1.5s infinite linear alternate;
+    z-index: 4;
+}
+@keyframes glitch-main {
+    0% { transform: none; }
+    10% { transform: translate(-2px, 2px) skewX(-2deg); }
+    20% { transform: translate(2px, -1px) skewY(1deg); }
+    30% { transform: translate(-1px, 1px) skewX(1deg); }
+    40% { transform: translate(1px, -2px) skewY(-1deg); }
+    50% { transform: none; }
+    100% { transform: none; }
+}
+@keyframes glitch-rgb {
+    0% { filter: blur(1.5px) contrast(1.2) drop-shadow(0 0 8px #9333ea); opacity: 0.7; }
+    20% { filter: blur(2.5px) contrast(1.4) drop-shadow(0 0 16px #a855f7); opacity: 0.9; }
+    40% { filter: blur(1.2px) contrast(1.1) drop-shadow(0 0 8px #9333ea); opacity: 0.6; }
+    60% { filter: blur(2px) contrast(1.3) drop-shadow(0 0 12px #a855f7); opacity: 0.8; }
+    100% { filter: blur(1.5px) contrast(1.2) drop-shadow(0 0 8px #9333ea); opacity: 0.7; }
+}
+@keyframes glitch-scan {
+    0% { clip-path: inset(0 0 80% 0); opacity: 0.5; }
+    10% { clip-path: inset(0 0 60% 0); opacity: 0.7; }
+    20% { clip-path: inset(0 0 40% 0); opacity: 0.8; }
+    30% { clip-path: inset(0 0 20% 0); opacity: 0.6; }
+    40% { clip-path: inset(0 0 0 0); opacity: 0.9; }
+    50% { clip-path: inset(20% 0 0 0); opacity: 0.7; }
+    60% { clip-path: inset(40% 0 0 0); opacity: 0.6; }
+    70% { clip-path: inset(60% 0 0 0); opacity: 0.8; }
+    80% { clip-path: inset(80% 0 0 0); opacity: 0.5; }
+    100% { clip-path: inset(0 0 80% 0); opacity: 0.5; }
+}
+.glitch-text {
+    color: #a855f7;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 12px #a855f7cc, 0 0 2px #fff;
+    margin-top: 0.5rem;
+    animation: glitch-text-flicker 1.2s infinite alternate;
+}
+@keyframes glitch-text-flicker {
+    0% { opacity: 1; filter: blur(0.5px); }
+    10% { opacity: 0.7; filter: blur(1.5px); }
+    20% { opacity: 1; filter: blur(0.5px); }
+    30% { opacity: 0.8; filter: blur(1px); }
+    40% { opacity: 1; filter: blur(0.5px); }
+    100% { opacity: 1; filter: blur(0.5px); }
+}
+@media (max-width: 600px) {
+    .glitch-img-wrap { width: 100px; height: 100px; }
+    .glitch-text { font-size: 1rem; }
+}
