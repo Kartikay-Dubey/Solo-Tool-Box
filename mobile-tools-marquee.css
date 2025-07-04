@@ -1,0 +1,79 @@
+/*
+ * Mobile Tools Marquee Styles (≤768px)
+ * Only affects mobile view. Desktop grid remains unchanged.
+ * Adds horizontal marquee effect for tool rows.
+ */
+@media (max-width: 768px) {
+  .tools-unique-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 0 0.2rem 0.5rem 0.2rem;
+    max-width: 100vw;
+    overflow: visible;
+  }
+  .marquee-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1.1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100vw;
+    min-width: 0;
+    padding-bottom: 0.2rem;
+    position: relative;
+    will-change: transform;
+  }
+  .marquee-row::-webkit-scrollbar {
+    display: none;
+  }
+  .marquee-row {
+    scrollbar-width: none;
+  }
+  .marquee-row-1 {
+    animation: marquee-left 24s linear infinite;
+  }
+  .marquee-row-2 {
+    animation: marquee-right 28s linear infinite;
+  }
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(50%); }
+  }
+  .marquee-row .tool-card {
+    min-width: 80vw !important;
+    max-width: 90vw !important;
+    flex: 0 0 auto;
+    margin: 0 0.2rem;
+  }
+}
+/* Hide original grid on mobile, replaced by marquee rows */
+@media (max-width: 768px) {
+  .tools-unique-grid:not(.marquee-enabled) {
+    display: none !important;
+  }
+}
+/* Loader responsiveness (for mobile) */
+@media (max-width: 600px) {
+  .glitch-loader-bg, .glitch-bg-img, .glitch-overlay, .glitch-scanlines {
+    width: 100vw !important;
+    height: 100vh !important;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+  .glitch-loader-text {
+    font-size: 1.05rem !important;
+    padding: 0 0.5rem;
+    bottom: 4vh;
+  }
+}
+/* Ensure loader image scales on mobile */
+@media (max-width: 600px) {
+  .glitch-bg-img {
+    background-size: cover !important;
+  }
+}

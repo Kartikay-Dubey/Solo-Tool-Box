@@ -151,14 +151,69 @@ nav.hide-on-scroll {
 }
 
 footer {
-    background: linear-gradient(135deg, #181622 0%, #1a1027 100%) !important;
-    border-top: 2px solid #3b2177 !important; /* Subtle separator */
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(120deg, rgba(24,22,34,0.65) 0%, rgba(26,16,39,0.55) 100%) !important;
+    box-shadow: none;
     color: #f3e8ff;
-    padding: 2.2rem 0 1.5rem 0;
+    padding: 1.1rem 0 0.7rem 0;
     text-align: center;
     font-size: 1.05rem;
     margin-top: 2.5rem;
+    position: relative;
+    z-index: 2;
+    border-top: none !important;
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+/* Circular Social Icons (neon, modern) */
+.footer-social-shape.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(60,30,100,0.18) 0%, rgba(147,51,234,0.13) 100%);
+    box-shadow: 0 0 12px 2px #a855f7, 0 0 24px 6px #3b2177;
+    border-radius: 50%;
+    border: 2.5px solid #a855f7;
+    transition: box-shadow 0.22s, color 0.22s, transform 0.22s, background 0.22s;
+    filter: drop-shadow(0 0 8px #a855f7cc);
+    position: relative;
+    background-clip: padding-box;
+}
+.footer-social-neo.footer-social-circle:hover .footer-social-shape.circle,
+.footer-social-neo.footer-social-circle:focus .footer-social-shape.circle {
+    color: #fff;
+    background: linear-gradient(135deg, #a855f7 60%, #6366f1 100%);
+    box-shadow: 0 0 24px 6px #a855f7, 0 0 32px 10px #6366f1;
+    transform: scale(1.08);
+}
+.footer-social-shape.circle i {
+    color: #fff;
+    text-shadow: 0 0 12px #a855f7, 0 0 24px #3b2177;
+    transition: color 0.2s, text-shadow 0.2s;
+    font-size: 1.5rem;
+}
+.footer-social-neo.footer-social-circle:hover .footer-social-shape.circle i,
+.footer-social-neo.footer-social-circle:focus .footer-social-shape.circle i {
+    color: #fff;
+    text-shadow: 0 0 24px #a855f7, 0 0 32px #6366f1;
+}
+/* Neon Pulse Tagline (centered) */
+.pulse-text {
+  color: #c084fc;
+  font-weight: 600;
+  text-align: center;
+  animation: pulseGlow 3s infinite;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 10px #c084fc, 0 0 20px #a855f7;
+  user-select: none;
+  white-space: pre-line;
+}
+@keyframes pulseGlow {
+  0%, 100% { text-shadow: 0 0 10px #c084fc, 0 0 20px #a855f7; color: #c084fc; }
+  50% { text-shadow: 0 0 20px #a855f7, 0 0 40px #6366f1; color: #a5b4fc; }
 }
 
 .footer-content {
