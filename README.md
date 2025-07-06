@@ -1,4 +1,4 @@
-<h1>#⚔️ Shadow Monarch's Arsenal </h1>
+<h1>⚔️ Shadow Monarch's Arsenal </h1>
 
 An anime-inspired, cyberpunk-themed web toolkit packed with essential digital utilities — wrapped in an immersive UI experience. Inspired by **Solo Leveling** and designed to be as powerful as the Shadow Monarch himself.
 
@@ -72,11 +72,9 @@ It’s not just functional — it’s **aesthetic, engaging, and themed**.
 
 ## 📸 Project Screenshots
 
-| Dark Theme Loader                           | Neon Wave Footer                          |
-|---------------------------------------------|-------------------------------------------|
-| ![Loader Screenshot](https://github.com/user-attachments/assets/a74a58f5-15a1-4c78-8f21-196efbf01dee)
-)   | ![UI Screenshot](https://github.com/user-attachments/assets/4529b26a-5d28-41f0-b6a5-3a0a9b1bd72b)
-) |
+| Dark Theme Loader | UI Preview |
+|--------------------|------------------|
+| ![Loader Screenshot](https://github.com/user-attachments/assets/a74a58f5-15a1-4c78-8f21-196efbf01dee) | ![UI Screenshot](https://github.com/user-attachments/assets/4529b26a-5d28-41f0-b6a5-3a0a9b1bd72b) |
 
 ---
 
