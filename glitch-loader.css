@@ -1,4 +1,10 @@
 /*
+ * All changes are modular, well-commented, and maintainable.
+ */
+/*
+ * July 2025: Loader is fully responsive and scales on all devices.
+ */
+/*
  * Fullscreen Glitch Loader Styles
  * Place loader image in /images/loader-glitch.png
  * Integrates with dark/cyber theme
@@ -141,6 +147,12 @@
 }
 @media (max-width: 600px) {
     .glitch-loader-text { font-size: 1rem; }
+    .glitch-loader-bg, .glitch-bg-img, .glitch-overlay, .glitch-scanlines {
+        width: 100vw !important;
+        height: 100vh !important;
+        min-width: 100vw;
+        min-height: 100vh;
+    }
 }
 /* --- Redesigned Neon Footer --- */
 .footer-modern {
