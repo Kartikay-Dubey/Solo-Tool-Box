@@ -203,55 +203,52 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <!-- Redesigned Footer: Modern, Neon, Responsive, No Top Borders -->
-    <footer class="footer-modern neon-footer-fadein">
-        <div class="footer-bg-animated"></div>
-        <div class="footer-inner">
-            <div class="footer-content-grid improved-footer-grid" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem;">
-                <!-- Profile/Info Section -->
-                <div class="footer-info-block improved-footer-info">
-                    <div class="footer-logo-glow">
-                        <span class="footer-logo-icon"><i class="fas fa-dragon"></i></span>
-                    </div>
-                    <div class="footer-info-text">
-                        <span class="footer-name">Kartikay Dubey</span>
-                        <span class="footer-role">Developer & Designer</span>
-                        <a href="mailto:kartikaydubey5074@gmail.com" class="footer-email-link">kartikaydubey5074@gmail.com</a>
-                    </div>
-                </div>
-                <!-- Centered Tagline with Neon Pulse -->
-                <div class="footer-animated-text-block" style="flex:1; display:flex; justify-content:center; align-items:center; min-width:220px;">
-                    <span class="footer-animated-text pulse-text" style="margin:0 auto;">The system uses me, and I use the system</span>
-                </div>
-                <!-- Social Icons Section -->
-                <div class="footer-socials-block improved-footer-socials">
-                    <div class="footer-socials-row improved-footer-socials-row">
-                        <a href="https://github.com/Kartikay-Dubey" class="footer-social-neo footer-social-circle" target="_blank" aria-label="GitHub">
-                            <span class="footer-social-shape circle" style="clip-path:none; border-radius:50%;"><i class="fab fa-github"></i></span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/kartikay-dubey-98ba73313/" class="footer-social-neo footer-social-circle" target="_blank" aria-label="LinkedIn">
-                            <span class="footer-social-shape circle" style="clip-path:none; border-radius:50%;"><i class="fab fa-linkedin"></i></span>
-                        </a>
-                        <a href="https://www.instagram.com/altruistic_kd/" class="footer-social-neo footer-social-circle" target="_blank" aria-label="Instagram">
-                            <span class="footer-social-shape circle" style="clip-path:none; border-radius:50%;"><i class="fab fa-instagram"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom-row">
-                <span>© 2024 Shadow Monarch's Arsenal</span>
-            </div>
+    <!-- Footer: Modern Neon, Dynamic Wave, Responsive -->
+    <footer class="site-footer">
+      <!-- Dynamic Wavy Top Border -->
+      <div class="footer-wave">
+        <svg viewBox="0 0 1440 54" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="footerWaveGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#221a36"/>
+              <stop offset="60%" stop-color="#2d1b69"/>
+              <stop offset="100%" stop-color="#a855f7"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,30 Q120,60 240,30 T480,30 T720,30 T960,30 T1200,30 T1440,30 V54 H0 Z" fill="url(#footerWaveGradient)"/>
+        </svg>
+      </div>
+      <div class="footer-content">
+        <!-- Developer Profile -->
+        <div class="footer-profile">
+          <span class="footer-logo"><i class="fas fa-dragon"></i></span>
+          <div class="footer-info">
+            <h2>Kartikay Dubey</h2>
+            <p>Developer & Designer</p>
+            <a href="mailto:kartikaydubey5074@gmail.com">kartikaydubey5074@gmail.com</a>
+          </div>
         </div>
-    <!-- Removed mobile-tools-marquee.css as marquee effect is deprecated -->
+        <!-- Centered Quote -->
+        <div class="footer-quote">
+          <p class="glow-pulse">The system uses me, and I use the system</p>
+        </div>
+        <!-- Social Media Icons -->
+        <div class="footer-social">
+          <a href="https://github.com/Kartikay-Dubey" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/kartikay-dubey-98ba73313/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/altruistic_kd/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 All Rights Reserved</p>
+      </div>
     </footer>
 
     <!-- Loading Screen (replaced by glitch loader above) -->
 
+    <link rel="stylesheet" href="footer.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
-    <!-- Mobile marquee for tools grid (mobile only) -->
-    <!-- Removed mobile-tools-marquee.js as marquee effect is deprecated -->
     <!-- Background Music & Glitch Loader logic -->
     <script src="site-extras.js"></script>
 </body>

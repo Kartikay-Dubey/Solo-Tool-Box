@@ -1,0 +1,258 @@
+/*
+ * footer.css - Modern Neon Footer with Dynamic Wave
+ * Author: Kartikay Dubey
+ * July 2025
+ *
+ * All footer styles, layout, and animations are isolated here.
+ *
+ * Responsive, minimal, and neon-themed. Fully documented for maintainability.
+ */
+
+/* ========== 1. WAVE DIVIDER ========== */
+.footer-wave {
+  position: relative;
+  width: 100%;
+  height: 54px;
+  margin-bottom: -1px;
+  z-index: 2;
+  overflow: hidden;
+  background: none;
+}
+.footer-wave svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.footer-wave path {
+  /* Neon purple glow */
+  stroke: #a855f7;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 16px #a855f7cc);
+  fill: url(#footerWaveGradient);
+  animation: waveFlow 7s linear infinite alternate;
+}
+@keyframes waveFlow {
+  0% { d: path('M0,30 Q120,60 240,30 T480,30 T720,30 T960,30 T1200,30 T1440,30 V54 H0 Z'); }
+  50% { d: path('M0,30 Q120,0 240,30 T480,30 T720,30 T960,30 T1200,30 T1440,30 V54 H0 Z'); }
+  100% { d: path('M0,30 Q120,60 240,30 T480,30 T720,30 T960,30 T1200,30 T1440,30 V54 H0 Z'); }
+}
+
+/* ========== 2. FOOTER BACKGROUND ========== */
+.site-footer {
+  background: linear-gradient(135deg, #181622 0%, #1a1027 100%);
+  color: #f3e8ff;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 -8px 32px #1a1027cc;
+  border: none;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* ========== 3. FOOTER LAYOUT ========== */
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 1.5rem 0.7rem 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive: Stack vertically on mobile */
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.1rem 0.7rem 0.5rem 0.7rem;
+  }
+}
+
+/* ========== 4. PROFILE SECTION ========== */
+.footer-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+.footer-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #221a36 0%, #2d1b69 100%);
+  box-shadow: 0 0 0 4px #a855f7cc, 0 0 24px #a855f7aa, 0 2px 16px #a855f722;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 12px #a855f7cc);
+  margin-right: 0.2rem;
+}
+.footer-logo i {
+  font-size: 2.1rem;
+  color: #a855f7;
+}
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+.footer-info h2 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+.footer-info p {
+  font-size: 1.01rem;
+  color: #c084fc;
+  font-weight: 500;
+  margin: 0;
+}
+.footer-info a {
+  color: #a855f7;
+  font-size: 0.98rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s, text-shadow 0.2s;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 1px;
+}
+.footer-info a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #a855f7cc;
+  border-bottom: 2px solid #a855f7;
+}
+
+@media (max-width: 600px) {
+  .footer-profile {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .footer-logo {
+    margin-right: 0;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* ========== 5. QUOTE SECTION ========== */
+.footer-quote {
+  flex: 1 1 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  text-align: center;
+}
+.glow-pulse {
+  color: #c084fc;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.01em;
+  user-select: none;
+  white-space: pre-line;
+  font-size: 1.13rem;
+  text-shadow: 0 0 10px #c084fc, 0 0 20px #a855f7;
+  animation: pulseGlow 2.8s infinite;
+}
+@keyframes pulseGlow {
+  0%, 100% { text-shadow: 0 0 10px #c084fc, 0 0 20px #a855f7; color: #c084fc; }
+  50% { text-shadow: 0 0 20px #a855f7, 0 0 40px #6366f1; color: #a5b4fc; }
+}
+
+/* ========== 6. SOCIAL ICONS ========== */
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+}
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(60,30,100,0.18) 0%, rgba(147,51,234,0.13) 100%);
+  box-shadow: 0 0 12px 2px #a855f7, 0 0 24px 6px #3b2177;
+  border: 2.5px solid #a855f7;
+  transition: box-shadow 0.22s, color 0.22s, transform 0.22s, background 0.22s;
+  filter: drop-shadow(0 0 8px #a855f7cc);
+  position: relative;
+  background-clip: padding-box;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.footer-social a:hover, .footer-social a:focus {
+  color: #fff;
+  background: linear-gradient(135deg, #a855f7 60%, #6366f1 100%);
+  box-shadow: 0 0 24px 6px #a855f7, 0 0 32px 10px #6366f1;
+  transform: scale(1.08);
+}
+.footer-social a i {
+  color: #fff;
+  text-shadow: 0 0 12px #a855f7, 0 0 24px #3b2177;
+  transition: color 0.2s, text-shadow 0.2s;
+  font-size: 1.5rem;
+}
+.footer-social a:hover i, .footer-social a:focus i {
+  color: #fff;
+  text-shadow: 0 0 24px #a855f7, 0 0 32px #6366f1;
+}
+@media (max-width: 600px) {
+  .footer-social {
+    gap: 0.7rem;
+    margin-top: 0.2rem;
+  }
+  .footer-social a {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}
+
+/* ========== 7. BOTTOM COPYRIGHT ========== */
+.footer-bottom {
+  text-align: center;
+  color: #e9d8fd;
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.5rem 0 0.7rem 0;
+  z-index: 2;
+  position: relative;
+  opacity: 0.85;
+}
+
+/* ========== 8. GENERAL & ANIMATION ========== */
+.site-footer {
+  animation: footerFadeIn 1.2s cubic-bezier(.4,0,.2,1);
+}
+@keyframes footerFadeIn {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* Remove horizontal scroll/overflow */
+.site-footer, .footer-content, .footer-wave {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Hide old footer styles if present */
+footer.footer-modern, .footer-bg-animated, .footer-inner, .footer-content-grid, .footer-info-block, .footer-logo-glow, .footer-logo-icon, .footer-info-text, .footer-name, .footer-role, .footer-email-link, .footer-socials-block, .footer-socials-row, .footer-social-neo, .footer-social-shape, .footer-bottom-row, .footer-divider-glow, .footer-animated-text-block, .pulse-text, .improved-footer-grid, .improved-footer-info, .improved-footer-socials, .improved-footer-socials-row {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ========== END OF FOOTER CSS ========== */
