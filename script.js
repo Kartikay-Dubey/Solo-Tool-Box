@@ -582,7 +582,8 @@ async function getWeather() {
      */
     const city = document.getElementById('city-input')?.value;
     const resultDiv = document.getElementById('weather-result');
-    const apiKey = '29434e4dded843668a072143250304'; // <-- Paste your WeatherAPI.com API key here
+    // API key is loaded from weather-key.js for local/dev security. DO NOT commit your key to GitHub.
+    const apiKey = window.WEATHER_API_KEY || '';
 
     if (!resultDiv) return;
     resultDiv.innerHTML = '';
