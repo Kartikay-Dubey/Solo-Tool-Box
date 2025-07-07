@@ -156,19 +156,14 @@ nav.hide-on-scroll {
     transition: top 0.4s cubic-bezier(.4,0,.2,1);
 }
 
-footer {
-    background: linear-gradient(120deg, rgba(24,22,34,0.65) 0%, rgba(26,16,39,0.55) 100%) !important;
-    box-shadow: none;
-    color: #f3e8ff;
-    padding: 1.1rem 0 0.7rem 0;
-    text-align: center;
-    font-size: 1.05rem;
-    margin-top: 2.5rem;
-    position: relative;
+/*
+ * Footer transparency fix for particles background:
+ * - Make footer background semi-transparent with a dark overlay using rgba.
+ * - Use backdrop-filter for extra readability and neon effect.
+ * - Ensures particles animation is visible behind the footer.
+ * - All other neon, layout, and responsiveness preserved.
+/* Footer styles moved to footer.css for easier maintenance. */
     z-index: 2;
-    border-top: none !important;
-    backdrop-filter: blur(12px) saturate(120%);
-    -webkit-backdrop-filter: blur(12px) saturate(120%);
 }
 /* Circular Social Icons (neon, modern) */
 .footer-social-shape.circle {

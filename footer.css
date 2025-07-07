@@ -1,4 +1,43 @@
 /*
+ * Footer transparency fix for particles background:
+ * - Remove any solid/opaque backgrounds and use only a subtle dark overlay.
+ * - Use backdrop-filter for extra readability and neon effect.
+ * - Ensures particles animation is visible behind the footer.
+ * - All other neon, layout, and responsiveness preserved.
+ */
+footer {
+    background: none !important; /* Remove any solid or gradient background */
+    color: #f3e8ff;
+    padding: 1.1rem 0 0.7rem 0;
+    text-align: center;
+    font-size: 1.05rem;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 2;
+    border-top: 2px solid #3b2177 !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    overflow: hidden;
+}
+
+/* Overlay for extra readability on top of particles, but under content */
+footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(24,22,34,0.68) 0%, rgba(26,16,39,0.68) 100%);
+    pointer-events: none;
+    /* Only slightly darken, so particles are visible but text is readable */
+    /* Lowered opacity for more particles visibility */
+}
+
+footer > *, footer .footer-content, footer .footer-bottom {
+    position: relative;
+    z-index: 2;
+}
+/*
  * footer.css - Modern Neon Footer with Dynamic Wave
  * Author: Kartikay Dubey
  * July 2025
@@ -39,7 +78,11 @@
 
 /* ========== 2. FOOTER BACKGROUND ========== */
 .site-footer {
-  background: linear-gradient(135deg, #181622 0%, #1a1027 100%);
+  /*
+   * Make footer background semi-transparent so particles show through.
+   * Overlay a dark, blurred layer for readability and neon effect.
+   */
+  background: linear-gradient(135deg, rgba(24,22,34,0.82) 0%, rgba(26,16,39,0.82) 100%);
   color: #f3e8ff;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   position: relative;
@@ -48,6 +91,25 @@
   border: none;
   margin-top: 0;
   padding: 0;
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* Overlay for extra readability on top of particles, but under content */
+.site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(24,22,34,0.72) 0%, rgba(26,16,39,0.72) 100%);
+  pointer-events: none;
+  /* Only slightly darken, so particles are visible but text is readable */
+}
+
+
+.footer-content, .footer-bottom {
+  position: relative;
+  z-index: 2;
 }
 
 /* ========== 3. FOOTER LAYOUT ========== */

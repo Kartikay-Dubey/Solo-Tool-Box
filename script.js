@@ -16,24 +16,28 @@ function initParticles() {
         }
 
         if (typeof particlesJS !== 'undefined') {
+            /*
+             * Increased density for richer effect, same style/colors.
+             * The particles-js container is already full-screen and fixed, so it covers the footer as well.
+             */
             particlesJS('particles-js', {
                 particles: {
-                    number: { 
-                        value: 60, 
-                        density: { 
-                            enable: true, 
-                            value_area: 800 
-                        } 
+                    number: {
+                        value: 110, // Increased from 60 for richer effect
+                        density: {
+                            enable: true,
+                            value_area: 700 // Slightly denser, but not cluttered
+                        }
                     },
                     color: { value: '#9333ea' },
                     shape: { type: 'circle' },
-                    opacity: { 
-                        value: 0.4, 
-                        random: false 
+                    opacity: {
+                        value: 0.4,
+                        random: false
                     },
-                    size: { 
-                        value: 2.5, 
-                        random: true 
+                    size: {
+                        value: 2.5,
+                        random: true
                     },
                     line_linked: {
                         enable: true,
@@ -55,13 +59,13 @@ function initParticles() {
                 interactivity: {
                     detect_on: 'canvas',
                     events: {
-                        onhover: { 
-                            enable: true, 
-                            mode: 'repulse' 
+                        onhover: {
+                            enable: true,
+                            mode: 'repulse'
                         },
-                        onclick: { 
-                            enable: true, 
-                            mode: 'push' 
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
                         },
                         resize: true
                     }
@@ -566,43 +570,78 @@ function initWeather() {
 }
 
 async function getWeather() {
+    /**
+     * Fetches and displays real weather data for a given city using WeatherAPI.com.
+     *
+     * Instructions:
+     * 1. Get your free API key from https://www.weatherapi.com/my/
+     * 2. Paste your API key below in place of 'YOUR_WEATHERAPI_KEY_HERE'
+     * 3. The tool will fetch weather for the city entered by the user.
+     * 4. Handles errors and displays user-friendly messages.
+     * 5. UI is responsive and accessible.
+     */
     const city = document.getElementById('city-input')?.value;
     const resultDiv = document.getElementById('weather-result');
-    
-    if (!city || !resultDiv) {
-        if (resultDiv) {
-            resultDiv.textContent = 'Please enter a city name';
-        }
+    const apiKey = '29434e4dded843668a072143250304'; // <-- Paste your WeatherAPI.com API key here
+
+    if (!resultDiv) return;
+    resultDiv.innerHTML = '';
+
+    if (!city || city.trim().length < 2) {
+        resultDiv.innerHTML = `<div class="text-red-400 font-semibold">Please enter a valid city name.</div>`;
         return;
     }
-    
+
+    // Show loading spinner while fetching
+    resultDiv.innerHTML = `<div class="loading-spinner" style="margin:1.5rem auto;"></div><div class="loading-text">Fetching weather...</div>`;
+
     try {
-        // Using a free weather API (you might need to get an API key for production)
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=demo&units=metric`);
-        
+        // Build API URL for WeatherAPI.com
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(city)}&aqi=no`;
+        const response = await fetch(url);
+
         if (!response.ok) {
-            throw new Error('City not found');
+            if (response.status === 400) {
+                resultDiv.innerHTML = `<div class="text-red-400 font-semibold">City not found. Please check the spelling.</div>`;
+            } else {
+                resultDiv.innerHTML = `<div class="text-red-400 font-semibold">Unable to fetch weather. Try again later.</div>`;
+            }
+            return;
         }
-        
+
         const data = await response.json();
-        const temp = Math.round(data.main.temp);
-        const description = data.weather[0].description;
-        const humidity = data.main.humidity;
-        const windSpeed = data.wind.speed;
-        
+        // Extract weather info
+        const temp = Math.round(data.current.temp_c);
+        const description = data.current.condition.text;
+        const humidity = data.current.humidity;
+        const windKph = data.current.wind_kph;
+        const icon = data.current.condition.icon;
+        const country = data.location.country;
+        const cityName = data.location.name;
+
+        // WeatherAPI.com icons are already full URLs, but may start with //
+        const iconUrl = icon.startsWith('//') ? 'https:' + icon : icon;
+
+        // Responsive, accessible, neon-styled weather card
         resultDiv.innerHTML = `
-            <div class="text-3xl font-bold text-purple-400">${city}</div>
-            <div class="text-2xl font-bold text-green-400">${temp}°C</div>
-            <div class="text-lg text-gray-300">${description}</div>
-            <div class="text-sm text-gray-400 mt-2">
-                Humidity: ${humidity}% | Wind: ${windSpeed} m/s
+            <div class="flex flex-col items-center justify-center gap-2 p-2">
+                <div class="flex items-center gap-2">
+                    <img src="${iconUrl}" alt="${description}" class="w-14 h-14" style="filter: drop-shadow(0 0 8px #a855f7cc);"/>
+                    <div>
+                        <div class="text-2xl font-bold text-purple-400">${cityName}, <span class="text-gray-300 text-lg">${country}</span></div>
+                        <div class="text-lg text-gray-300 capitalize">${description}</div>
+                    </div>
+                </div>
+                <div class="text-4xl font-bold text-green-400 mt-1 mb-1">${temp}&deg;C</div>
+                <div class="flex gap-4 text-sm text-gray-400 mt-1">
+                    <span>Humidity: <span class="text-purple-300 font-semibold">${humidity}%</span></span>
+                    <span>Wind: <span class="text-purple-300 font-semibold">${windKph} kph</span></span>
+                </div>
             </div>
         `;
     } catch (error) {
         console.error('Weather error:', error);
-        if (resultDiv) {
-            resultDiv.textContent = 'Error fetching weather data. Please try again.';
-        }
+        resultDiv.innerHTML = `<div class="text-red-400 font-semibold">Error fetching weather. Please check your connection or try again later.</div>`;
     }
 }
 
